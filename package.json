@@ -1,19 +1,31 @@
 {
-  "name": "discord.js_cmds",
+  "name": "@flamesx_128/discord.js_cmds",
   "version": "1.0.0",
-  "description": "create your commands easily for your discord bot",
-  "main": "index.js",
+  "description": "create your commands easily for your discord bot.",
+  "main": "JS/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node JS/index.js",
     "dev": "nodemon -e ts --exec \"npm run build && npm start\""
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlamesX-128/Discord.js_cmds.git"
+  },
+  "keywords": [
+    "discord",
+    "discord.js",
+    "discord.js_cmds",
+    "@flamesx_128/discord.js_cmds"
+  ],
   "author": "FlamesX-128",
-  "license": "ISC",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/FlamesX-128/Discord.js_cmds/issues"
+  },
+  "homepage": "https://github.com/FlamesX-128/Discord.js_cmds#readme",
   "devDependencies": {
     "@types/node": "^14.14.37",
     "nodemon": "^2.0.7"
-  },
-  "dependencies": {}
+  }
 }

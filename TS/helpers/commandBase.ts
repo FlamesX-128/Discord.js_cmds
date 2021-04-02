@@ -1,4 +1,4 @@
-import { validateCommand } from './validateCommand';
+import { validateCommand } from './validateCommand'
 
 export class commandBase {
     protected command: {

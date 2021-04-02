@@ -1,9 +1,9 @@
-export async function readCommand(prefix: string, message: any, commandList: any) {
-    const {content} = message;
-    const args = content.split(/[ ]+/);
-    const command = args[0].split(prefix);
-    command.shift();
-    args.shift();
+import { commandBase } from './helpers/commandBase';
+import { readCommand } from './helpers/readCommand';
+import { validateCommand } from './helpers/validateCommand';
 
-    commandList[command].execute(prefix, message)
-}
+module.exports = {
+    readCommand,
+    commandBase,
+    validateCommand
+};
