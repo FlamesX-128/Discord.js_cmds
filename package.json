@@ -1,0 +1,19 @@
+{
+  "name": "discord.js_cmds",
+  "version": "1.0.0",
+  "description": "create your commands easily for your discord bot",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node JS/index.js",
+    "dev": "nodemon -e ts --exec \"npm run build && npm start\""
+  },
+  "keywords": [],
+  "author": "FlamesX-128",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.37",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {}
+}
