@@ -1,6 +1,3 @@
-export const commandList = {
-}
-
 export async function readCommand(prefix: string, message: any, commandList: any) {
     const {content} = message;
     const args = content.split(/[ ]+/);

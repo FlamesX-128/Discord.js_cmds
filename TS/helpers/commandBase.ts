@@ -1,13 +1,13 @@
-import { validateCommand } from './validateCommand'
+import { validateCommand } from './validateCommand';
 
 export class commandBase {
-    command: {
+    protected command: {
         command: string;
         aliases: null | string | string[];
     };
-    category: null | string | string[];
-    IsActivated: boolean;
-    Args: {
+    protected category: null | string | string[];
+    protected IsActivated: boolean;
+    protected Args: {
         requiredOne: boolean;
         minArgsOne: number;
         maxArgsOne: null | number;
@@ -18,14 +18,14 @@ export class commandBase {
         minArgsTree: number;
         maxArgsTree: null | number;
     };
-    Perms: {
+    protected Perms: {
         Alternative: boolean;
         requiredRoles: string[];
         requiredPerms: string[];
     };
-    expectedArgs: null | string;
+    protected expectedArgs: null | string;
 
-    constructor() {
+    protected constructor() {
         this.command = {
             command: 'undefined',
             aliases: null,
@@ -48,7 +48,7 @@ export class commandBase {
             requiredRoles: [],
             requiredPerms: []
         },
-        this.expectedArgs = null
+        this.expectedArgs = null;
     };
 
     async execute(prefix: string, message: any) {
@@ -64,10 +64,10 @@ export class commandBase {
 
         if(result == true) {
             await this.validCommand(message)
-        }
-    }
+        };
+    };
 
     async validCommand(message: any){
-        console.log("undefined")
-    }
+        console.log("undefined");
+    };
 };

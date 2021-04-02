@@ -8,6 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validateCommand = void 0;
 const validatePerms = (permissions) => __awaiter(void 0, void 0, void 0, function* () {
     const validPerms = [
         'CREATE_INSTANT_INVITE',
@@ -50,7 +52,7 @@ const validatePerms = (permissions) => __awaiter(void 0, void 0, void 0, functio
     }
     ;
 });
-function validateCommand(message, command, IsActivated, Args, Perms, expectedArgs) {
+function validateCommand(prefix, message, command, IsActivated, Args, Perms, expectedArgs) {
     return __awaiter(this, void 0, void 0, function* () {
         const { content, guild, member } = message;
         const args = message.content.split(/[ ]+/);
@@ -60,19 +62,22 @@ function validateCommand(message, command, IsActivated, Args, Perms, expectedArg
         }
         else if (Args.requiredOne == true) {
             if (args[0].length < Args.minArgsOne || (Args.maxArgsOne !== null && args[0] > Args.maxArgsOne)) {
-                yield message.reply(`Incorrect requested arguments! Use: ${command.prefix}${command.command} ${expectedArgs}`);
+                yield message.reply(`Incorrect requested arguments! Use: ${prefix}${command.command} ${expectedArgs}`);
+                return false;
             }
             ;
         }
         else if (Args.requiredTwo == true) {
             if (args[1].length < Args.minArgsTwo || (Args.maxArgsTwo !== null && args[1] > Args.maxArgsTwo)) {
-                yield message.reply(`Incorrect requested arguments! Use: ${command.prefix}${command.command} ${expectedArgs}`);
+                yield message.reply(`Incorrect requested arguments! Use: ${prefix}${command.command} ${expectedArgs}`);
+                return false;
             }
             ;
         }
         else if (Args.requiredTree == true) {
             if (args[2].length < Args.minArgsTree || (Args.maxArgsTree !== null && args[2] > Args.maxArgsTree)) {
-                yield message.reply(`Incorrect requested arguments! Use: ${command.prefix}${command.command} ${expectedArgs}`);
+                yield message.reply(`Incorrect requested arguments! Use: ${prefix}${command.command} ${expectedArgs}`);
+                return false;
             }
             ;
         }
@@ -80,16 +85,17 @@ function validateCommand(message, command, IsActivated, Args, Perms, expectedArg
             yield validatePerms(Perms.requiredPerms);
             const result = yield validPerms(message, member, Perms.Alternative, Perms.requiredPerms, Perms.requiredRoles);
             if (result == false)
-                return;
+                return false;
         }
         else if (Perms.requiredRoles.length) {
             const result = yield validRoles(message, member, Perms.Alternative, Perms.requiredPerms, Perms.requiredRoles);
             if (result == false)
-                return;
+                return false;
         }
-        ;
+        return true;
     });
 }
+exports.validateCommand = validateCommand;
 ;
 function validPerms(message, member, Alternative, requiredPerms, requiredRoles, checkAlter) {
     return __awaiter(this, void 0, void 0, function* () {

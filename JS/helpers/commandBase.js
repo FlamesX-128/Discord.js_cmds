@@ -1,10 +1,21 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.commandBase = void 0;
+const validateCommand_1 = require("./validateCommand");
 class commandBase {
     constructor() {
         this.command = {
             command: 'undefined',
             aliases: null,
-            prefix: '!>'
         },
             this.category = null,
             this.IsActivated = false,
@@ -21,13 +32,28 @@ class commandBase {
             },
             this.Perms = {
                 Alternative: false,
-                requiredRoles: null,
-                requiredPerms: null
+                requiredRoles: [],
+                requiredPerms: []
             },
             this.expectedArgs = null;
     }
     ;
-    validCmd() {
+    execute(prefix, message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = yield validateCommand_1.validateCommand(prefix, message, this.command, this.IsActivated, this.Args, this.Perms, this.expectedArgs);
+            if (result == true) {
+                yield this.validCommand(message);
+            }
+            ;
+        });
     }
+    ;
+    validCommand(message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("undefined");
+        });
+    }
+    ;
 }
+exports.commandBase = commandBase;
 ;

@@ -8,18 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const commandList = {
-    "ping": {
-        "execute": (message) => { console.log("ping"); }
-    }
-};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.readCommand = void 0;
 function readCommand(prefix, message, commandList) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { member, guild, content } = message;
+        const { content } = message;
         const args = content.split(/[ ]+/);
         const command = args[0].split(prefix);
         command.shift();
         args.shift();
-        commandList[command].execute();
+        commandList[command].execute(prefix, message);
     });
 }
+exports.readCommand = readCommand;
