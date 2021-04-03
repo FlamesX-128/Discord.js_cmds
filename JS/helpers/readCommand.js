@@ -12,18 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.readCommand = void 0;
 function readCommand(prefix, message, commandList) {
     return __awaiter(this, void 0, void 0, function* () {
+        const { content } = message;
+        const args = content.split(/[ ]+/);
+        const command = args[0].split(`${prefix}`);
+        command.shift();
+        args.shift();
         try {
-            const { content } = message;
-            const args = content.split(/[ ]+/);
-            const command = args[0].split(prefix);
-            command.shift();
-            args.shift();
-            commandList[command].execute(prefix, message, commandList);
+            yield commandList[command].checkCommand(prefix, message);
         }
-        catch (err) {
-            console.log(err);
+        catch (_a) {
+            return;
         }
-        ;
     });
 }
 exports.readCommand = readCommand;

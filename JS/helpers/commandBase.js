@@ -11,13 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.commandBase = void 0;
 const validateCommand_1 = require("./validateCommand");
+//var STRING: null | string | string[]
 class commandBase {
     constructor() {
-        this.command = {
-            command: 'undefined',
-            aliases: null,
-        },
-            this.category = null,
+        this.command = '';
+        this.category = null,
             this.IsActivated = false,
             this.Args = {
                 requiredOne: false,
@@ -35,20 +33,20 @@ class commandBase {
                 requiredRoles: [],
                 requiredPerms: []
             },
-            this.expectedArgs = null;
+            this.expectedArgs = '';
     }
     ;
-    execute(prefix, message) {
+    checkCommand(prefix, message) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield validateCommand_1.validateCommand(prefix, message, this.command, this.IsActivated, this.Args, this.Perms, this.expectedArgs);
-            if (result == true) {
-                yield this.validCommand(message);
+            const valid = yield validateCommand_1.validateCommand(prefix, message, this.command, this.IsActivated, this.Args, this.expectedArgs, this.Perms);
+            if (valid == true) {
+                yield this.execute(message);
             }
             ;
         });
     }
     ;
-    validCommand(message) {
+    execute(message) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("undefined");
         });

@@ -1,13 +1,12 @@
 import { validateCommand } from './validateCommand'
 
+//var STRING: null | string | string[]
+
 export class commandBase {
-    protected command: {
-        command: string;
-        aliases: null | string | string[];
-    };
-    protected category: null | string | string[];
-    protected IsActivated: boolean;
-    protected Args: {
+    public command: string;
+    public category: null | string | string[];
+    public IsActivated: boolean;
+    public Args: {
         requiredOne: boolean;
         minArgsOne: number;
         maxArgsOne: null | number;
@@ -18,18 +17,15 @@ export class commandBase {
         minArgsTree: number;
         maxArgsTree: null | number;
     };
-    protected Perms: {
+    public Perms: {
         Alternative: boolean;
-        requiredRoles: string[];
-        requiredPerms: string[];
+        requiredRoles: string | string[];
+        requiredPerms: string | string[];
     };
-    protected expectedArgs: null | string;
+    public expectedArgs: null | string;
 
-    protected constructor() {
-        this.command = {
-            command: 'undefined',
-            aliases: null,
-        },
+    public constructor() {
+        this.command = ''
         this.category = null,
         this.IsActivated = false,
         this.Args = {
@@ -48,26 +44,26 @@ export class commandBase {
             requiredRoles: [],
             requiredPerms: []
         },
-        this.expectedArgs = null;
+        this.expectedArgs = '';
     };
 
-    async execute(prefix: string, message: any) {
-        const result: boolean = await validateCommand(
+    public async checkCommand(prefix: string, message: any) {
+        const valid: boolean = await validateCommand(
             prefix,
             message,
             this.command,
             this.IsActivated,
             this.Args,
-            this.Perms,
-            this.expectedArgs
+            this.expectedArgs,
+            this.Perms
         );
 
-        if(result == true) {
-            await this.validCommand(message)
+        if(valid == true) {
+            await this.execute(message);
         };
     };
 
-    async validCommand(message: any){
+    public async execute(message: any){
         console.log("undefined");
     };
 };
