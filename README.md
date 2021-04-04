@@ -177,6 +177,12 @@ export const ping = new class cmdPing extends commandBase {
 }
 ```
 
+** Plans: ** 
+- Add automatic command reader.
+- Improve the validation of arguments. 
+- Add help and information for the default command. 
+- Optimize the code.
+
 # <-------------------------------------->
 
 ## **Español**
@@ -356,3 +362,9 @@ export const ping = new class cmdPing extends commandBase {
     }
 }
 ```
+
+**Planes:**
+- Añadir lector automatico de comandos.
+- Mejorar la validacion de argumentos.
+- Agregar comando por defecto help y info.
+- Optimizar el codigo.
