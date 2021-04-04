@@ -38,7 +38,7 @@ import { commandBase } from '@flamesx_128/discord.js_cmds'
 export const ping = new class cmdPing extends commandBase {
     constructor() {
         super();
-        // valores del comando
+        // values of command
         this.command = 'ping'
         this.category = 'misc';
         this.IsActivated = true;
