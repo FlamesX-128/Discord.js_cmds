@@ -1,15 +1,19 @@
+import { checkPermissions } from './helpers/validations/validatePerms/checkPermissions';
+import { checkPerms } from './helpers/validations/validatePerms/checkPerms';
+import { checkRoles } from './helpers/validations/validatePerms/checkRoles';
+import { validatePermissions } from './helpers/validations/validatePerms/validatePermissions';
+import { validateArgs } from './helpers/validations/validateArgs';
 import { commandBase } from './helpers/commandBase';
 import { readCommand } from './helpers/readCommand';
 import { validateCommand } from './helpers/validateCommand';
-import { validateArgs } from './helpers/validations/validateArgs';
-import { validatePermissions, validPerms, validRoles} from './helpers/validations/validatePerms';
 
 module.exports = {
-    readCommand,
-    commandBase,
-    validateCommand,
-    validateArgs,
+    checkPermissions,
+    checkPerms,
+    checkRoles,
     validatePermissions,
-    validPerms,
-    validRoles
+    validateArgs,
+    commandBase,
+    readCommand,
+    validateCommand
 };

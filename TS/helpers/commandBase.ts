@@ -54,8 +54,8 @@ export class commandBase {
             this.command,
             this.IsActivated,
             this.Args,
-            this.expectedArgs,
-            this.Perms
+            this.Perms,
+            this.expectedArgs
         );
 
         if(valid == true) {

@@ -1,5 +1,5 @@
+import { checkPermissions } from './validations/validatePerms/checkPermissions';
 import { validateArgs } from './validations/validateArgs'
-import { validatePermissions } from './validations/validatePerms'
 
 export async function validateCommand(
     prefix: string,
@@ -17,18 +17,19 @@ export async function validateCommand(
         minArgsTree: number;
         maxArgsTree: null | number;
     },
-    expectedArgs: null | string,
     Perms: {
         Alternative: boolean;
         requiredRoles: string | string[];
         requiredPerms: string | string[];
-    }
+    },
+    expectedArgs: null | string
     ): Promise<boolean> {        
         if (IsActivated == false) return false;
-        const validPerms: boolean = await validatePermissions(
+
+        const validPerms: boolean = await checkPermissions(
             message, 
             Perms
-        )
+        );
 
         const validArgs: boolean = await validateArgs(
             message, 
@@ -36,7 +37,7 @@ export async function validateCommand(
             prefix, 
             command, 
             expectedArgs
-        )
+        );
         
         if (validPerms && validArgs == true) return true;
         return false;

@@ -38,7 +38,7 @@ class commandBase {
     ;
     checkCommand(prefix, message) {
         return __awaiter(this, void 0, void 0, function* () {
-            const valid = yield validateCommand_1.validateCommand(prefix, message, this.command, this.IsActivated, this.Args, this.expectedArgs, this.Perms);
+            const valid = yield validateCommand_1.validateCommand(prefix, message, this.command, this.IsActivated, this.Args, this.Perms, this.expectedArgs);
             if (valid == true) {
                 yield this.execute(message);
             }
