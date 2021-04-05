@@ -16,7 +16,11 @@
     "discord",
     "discord.js",
     "discord.js_cmds",
-    "@flamesx_128/discord.js_cmds"
+    "@flamesx_128/discord.js_cmds",
+    "discord.js create commands easily",
+    "create commands easily",
+    "cmds",
+    "commands"
   ],
   "author": "FlamesX-128",
   "license": "MIT License",
