@@ -4,7 +4,12 @@ This package helps you create discord.js commands more easily, it includes:
 
 ### **Install:**
 From NPM: npm i @flamesx_128/discord.js_cmds <br>
-From GitHub: npm i https://github.com/FlamesX-128/Discord.js_cmds
+From GitHub: 
+1- open a terminal and add: <br>
+2- ```git clone https://github.com/FlamesX-128/Discord.js_cmds``` <br>
+3- open a terminal in the file <br>
+4- convert files to JS <br>
+5- add files in node_modules <br>
 
 ### **command Base:**
 ```TypeScript
@@ -194,7 +199,12 @@ Este paquete te ayuda a la creacion de comandos en discord.js mas facil, incluye
 
 ### **Instalar:**
 desde NPM: npm i @flamesx_128/discord.js_cmds <br>
-desde GitHub: npm i https://github.com/FlamesX-128/Discord.js_cmds
+desde GitHub: 
+1- abre una terminal y agrega: <br>
+2- ```git clone https://github.com/FlamesX-128/Discord.js_cmds``` <br>
+3- abre una terminal en el archivo <br>
+4- convierte los archivos a javascript <br>
+5- agrega los archivos a node_modules <br>
 
 ### **Base de los comandos:**
 ```TypeScript
