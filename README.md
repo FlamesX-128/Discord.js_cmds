@@ -2,6 +2,10 @@
 ## **English**
 This package helps you create discord.js commands more easily, it includes:
 
+### **Install:**
+From NPM: npm i @flamesx_128/discord.js_cmds
+From GitHub: npm i https://github.com/FlamesX-128/Discord.js_cmds
+
 ### **command Base:**
 ```TypeScript
 public command       :  string
@@ -187,6 +191,10 @@ export const ping = new class cmdPing extends commandBase {
 
 ## **Español**
 Este paquete te ayuda a la creacion de comandos en discord.js mas facil, incluye:
+
+### **Instalar:**
+desde NPM: npm i @flamesx_128/discord.js_cmds
+desde GitHub: npm i https://github.com/FlamesX-128/Discord.js_cmds
 
 ### **Base de los comandos:**
 ```TypeScript
