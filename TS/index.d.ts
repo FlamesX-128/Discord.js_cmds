@@ -1,109 +1,103 @@
 declare module '@flamesx_128/discord.js_cmds' {
 
-/*=====================================================================================================
-        VALIDATE PERMISSIONS AND ROLS
-=====================================================================================================*/
+    /*=====================================================================================================
+            VALIDATE PERMISSIONS AND ROLS
+    =====================================================================================================*/
 
     export function checkPermissions(
-        message: any, 
+        message: any,
         Perms: any
-    ): boolean;
+    ): Promise<boolean>;
 
     export function checkPerms(
         message: any,
-        Alternative: boolean, 
-        requiredPerms: string | string[], 
-        requiredRoles: string | string[],
+        Alternative: boolean,
+        requiredPerms: string[],
+        requiredRoles: string[],
         checkAlter?: boolean
-    ): boolean;
+    ): Promise<boolean>;
 
     export function checkRoles(
         message: any,
-        Alternative: boolean, 
-        requiredPerms: string | string[], 
-        requiredRoles: string | string[],
+        Alternative: boolean,
+        requiredPerms: string[],
+        requiredRoles: string[],
         checkAlter?: boolean
-    ): boolean;
+    ): Promise<boolean>;
 
     export function validatePermissions(
         permissions: string[]
-    ): boolean;
+    ): Promise<void>;
 
     export function validateArgs(
-        message: any, 
+        message: any,
         Args: any,
         prefix: string,
-        command: string,
-        expectedArgs: string
-    ): boolean;
+        name: any,
+        expectedArgs: null | string
+    ): Promise<boolean>;
 
-/*=====================================================================================================
-        COMMAND BASE
-=====================================================================================================*/
+    /*=====================================================================================================
+            COMMAND BASE
+    =====================================================================================================*/
 
     export class commandBase {
-    public command: string
-    public category: null | string | string[];
-    public IsActivated: boolean;
-    public Args: {
-        requiredOne: boolean;
-        minArgsOne: number;
-        maxArgsOne: null | number;
-        requiredTwo: boolean;
-        minArgsTwo: number;
-        maxArgsTwo: null | number;
-        requiredTree: boolean;
-        minArgsTree: number;
-        maxArgsTree: null | number;
-    };
-    public Perms: {
-        Alternative: boolean;
-        requiredRoles: string | string[];
-        requiredPerms: string | string[];
-    };
-    public expectedArgs: null | string;
+        public name: {
+            command: string,
+            aliases: null | string[]
+        }
+        public category: null | string[];
+        public IsActivated: boolean;
+        public Args: {
+            numberOfArgs: null | number;
+            minArgs: number;
+            maxArgs: null | number;
+        };
+        public Perms: {
+            Alternative: boolean;
+            requiredRoles: string[];
+            requiredPerms: string[];
+        };
+        public expectedArgs: null | string;
 
-    public constructor();
-    public checkCommand(prefix: string, message: any): null;
-    protected execute(message: any): any
+        public constructor();
+        public checkCommand(prefix: string, message: any): Promise<void>;
+        public execute(message: any): Promise<void>;
     }
 
-/*=====================================================================================================
-        READ COMMAND
-=====================================================================================================*/
+    /*=====================================================================================================
+            READ COMMANDS
+    =====================================================================================================*/
+
+    export function readFiles(
+        directory: any,
+        target: any
+    ): Promise<void>;
 
     export function readCommand(
-        prefix: string, 
-        message: any, 
-        commandList: any
-    ): any;
+        prefix: string,
+        message: any
+    ): Promise<void>;
 
-/*=====================================================================================================
-        VALIDATE COMMAND
-=====================================================================================================*/
+    /*=====================================================================================================
+            VALIDATE COMMAND
+    =====================================================================================================*/
 
-    export function validateCommand( 
+    export function validateCommand(
         prefix: string,
         message: any,
-        command: string,
+        name: any,
         IsActivated: boolean,
         Args: {
-            requiredOne: boolean;
-            minArgsOne: number;
-            maxArgsOne: null | number;
-            requiredTwo: boolean;
-            minArgsTwo: number;
-            maxArgsTwo: null | number;
-            requiredTree: boolean;
-            minArgsTree: number;
-            maxArgsTree: null | number;
+            Alternative: boolean;
+            requiredRoles: string[];
+            requiredPerms: string[];
         },
         Perms: {
             Alternative: boolean;
-            requiredRoles: string | string[];
-            requiredPerms: string | string[];
+            requiredRoles: string[];
+            requiredPerms: string[];
         },
         expectedArgs: null | string
-    ): boolean;
-
+    ): Promise<boolean>;
 }
