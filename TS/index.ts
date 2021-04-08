@@ -18,11 +18,11 @@ export async function readFiles(directory: any, target: any): Promise<void> {
         const stat = fs.lstatSync(path.join(directory, target, file));
 
         if (stat.isDirectory()) {
-            readFiles(directory, path.join(target, file));
+            await readFiles(directory, path.join(target, file));
             
         } else {
-            const option = require(path.join(directory, target, file));
-            commands.push(option);
+            const option = await require(path.join(directory, target, file));
+            await commands.push(option);
             console.log(file, option);
         };
     };
@@ -36,17 +36,22 @@ export async function readCommand(prefix: string, message: any): Promise<void> {
     args.shift();
 
     try {
-        for (let Case = 0; Case < commands.length; Case++) {
-            if (commands[Case].name.command == command) {
-                commands[Case].checkCommand(prefix, message);
+        await commands.forEach(async (element: any) => {
+            if (await element.name.command == await command) {
+                return await element.checkCommand(prefix, message);
+                
             } else {
-                for (let CASE = 0; CASE < commands[Case].name.aliases.length; CASE++) {
-                    if (commands[Case].name.aliases[CASE] == command) {
-                        return commands[Case].checkCommand(prefix, message);
-                    };
+                const alias = await element.name.aliases;
+                
+                if (alias) {
+                    await alias.forEach(async (Element: any) => {
+                        if (await Element == await command) {
+                            return await element.checkCommand(prefix, message);
+                        };
+                    });
                 };
             };
-        };
+        });
     } catch {
         return;
     };

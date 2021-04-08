@@ -1,7 +1,10 @@
-# **Discord.js_cmds**
+# **Discord.js_cmds v2.2.0**
 This package helps you create discord.js commands more easily.
 
-## **Install:**
+## **Features:**
+- Fixed an issue that prevented the use of multiple commands.
+
+### **Install:**
 From NPM: ```npm i @flamesx_128/discord.js_cmds```
 From GitHub:
 - Open a terminal and add: ```git clone https://github.com/FlamesX-128/Discord.js_cmds```
@@ -9,10 +12,10 @@ From GitHub:
 - Convert files to JS.
 - Add files in node_modules.
 
-### **Example TypeScript:**
+#### **Example TypeScript:**
 
 ```TypeScript
-//src/index.ts
+//FILE = src/index.ts
 import { Client } from 'discord.js';
 import { readFiles, readCommand } from '@flamesx_128/discord.js_cmds';
 const client = new Client();
@@ -31,7 +34,7 @@ client.login('SECRET TOKEN');
 ```
 
 ```TypeScript
-//src/commands/cmdPing.ts
+//FILE = src/commands/cmdPing.ts
 import { commandBase } from '@flamesx\_128/discord.js\_cmds'
 module.exports = new class cmdPing extends commandBase {
 	constructor() {
