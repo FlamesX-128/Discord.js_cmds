@@ -40,7 +40,8 @@ module.exports = new class cmdPing extends commandBase {
 			command: 'ping',
 			aliases: ['pi']
 		};
-		this.category = ['misc']
+		this.category = ['misc'];
+		this.IsActivated = true;
 	};
 		
 	async execute(message: any) {
