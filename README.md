@@ -5,7 +5,7 @@ This package helps you create discord.js commands more easily.
 - Fixed an issue that prevented the use of multiple commands.
 
 ### **Install:**
-From NPM: ```npm i @flamesx_128/discord.js_cmds```
+From NPM: ```npm i @flamesx_128/discord.js_cmds``` <br>
 From GitHub:
 - Open a terminal and add: ```git clone https://github.com/FlamesX-128/Discord.js_cmds```
 - Open a terminal in the file.
@@ -35,7 +35,7 @@ client.login('SECRET TOKEN');
 
 ```TypeScript
 //FILE = src/commands/cmdPing.ts
-import { commandBase } from '@flamesx\_128/discord.js\_cmds'
+import { commandBase } from '@flamesx_128/discord.js\_cmds'
 module.exports = new class cmdPing extends commandBase {
 	constructor() {
 		super();
