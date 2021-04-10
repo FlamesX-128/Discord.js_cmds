@@ -35,7 +35,7 @@ client.login('SECRET TOKEN');
 
 ```TypeScript
 //FILE = src/commands/cmdPing.ts
-import { commandBase } from '@flamesx_128/discord.js\_cmds'
+import { commandBase } from '@flamesx_128/discord.js_cmds'
 module.exports = new class cmdPing extends commandBase {
 	constructor() {
 		super();
